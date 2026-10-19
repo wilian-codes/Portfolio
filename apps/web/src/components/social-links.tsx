@@ -1,14 +1,5 @@
-import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react'
-import { Mail } from 'lucide-react'
-import { PROFILE } from '@/data/profile'
+import { SOCIAL_LINKS } from '@/data/social-links'
 import { cn } from '@/lib/utils'
-
-// Business rule: public contact info is email, GitHub, and LinkedIn only.
-const SOCIAL_LINKS = [
-  { label: 'Email', href: `mailto:${PROFILE.email}`, Icon: Mail, isExternal: false },
-  { label: 'GitHub', href: PROFILE.githubUrl, Icon: IconBrandGithub, isExternal: true },
-  { label: 'LinkedIn', href: PROFILE.linkedinUrl, Icon: IconBrandLinkedin, isExternal: true },
-]
 
 type SocialLinksProps = {
   className?: string

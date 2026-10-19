@@ -33,6 +33,8 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 - Bento (`features/bento/`): every card uses `BentoCard` for the border, cursor `spotlight`, hover lift, and `rise-in` reveal. Clickable cards use `CardLink`, which stretches one real link over the whole card.
 - Routes: `/` (home) and `/projects/:slug` (one page per project in `data/projects.ts`; unknown slugs show the 404 page). Project fields that are still empty (stack, live link, source link) are hidden, not faked.
 - Scrolling: smooth within a page; changing pages jumps instantly. `useInstantScrollOnPageChange` handles that and must stay before `<ScrollRestoration />` in the root layout.
+- In-page links use React Router's `Link` (e.g. `to="#top"`), not a plain `<a href="#…">`: the router treats a plain hash link as "back" and restores the old scroll position.
+- Contact links (email, GitHub, LinkedIn) live in `data/social-links.ts`; the icon row, contact section, and footer all read from it. Never add a phone number there.
 
 ## Working agreement
 

@@ -1,4 +1,5 @@
 import { Outlet, ScrollRestoration } from 'react-router'
+import { SiteFooter } from '@/features/footer/components/site-footer'
 import { SiteNav } from '@/features/nav/components/site-nav'
 import { useInstantScrollOnPageChange } from '@/hooks/use-instant-scroll-on-page-change'
 
@@ -22,6 +23,7 @@ export function RootLayout() {
       <main id="main" className="min-h-dvh">
         <Outlet />
       </main>
+      <SiteFooter />
       <InstantScrollOnPageChange />
       <ScrollRestoration />
     </>
