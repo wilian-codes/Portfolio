@@ -1,0 +1,2 @@
+# Store text files with LF endings so they match Linux CI and hosting.
+* text=auto eol=lf
