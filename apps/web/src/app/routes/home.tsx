@@ -1,10 +1,10 @@
 import { BentoSection } from '@/features/bento/components/bento-section'
 import { HeroSection } from '@/features/hero/components/hero-section'
+import { ProjectListSection } from '@/features/projects/components/project-list-section'
 import { TechMarquee } from '@/features/tech-marquee/components/tech-marquee'
 
-// Placeholder sections so the nav has targets; steps 6–7 replace each one.
+// Placeholder section so the nav has a target; step 7 replaces it.
 const PLACEHOLDER_SECTIONS = [
-  { id: 'work', label: '02 / Work', title: 'Selected projects', note: 'Projects arrive in step 6.' },
   { id: 'contact', label: '03 / Contact', title: "Let's work together", note: 'Contact arrives in step 7.' },
 ]
 
@@ -18,6 +18,7 @@ export function HomePage() {
       </div>
 
       <BentoSection />
+      <ProjectListSection />
 
       {PLACEHOLDER_SECTIONS.map((section) => (
         <section

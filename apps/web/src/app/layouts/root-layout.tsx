@@ -1,5 +1,13 @@
 import { Outlet, ScrollRestoration } from 'react-router'
 import { SiteNav } from '@/features/nav/components/site-nav'
+import { useInstantScrollOnPageChange } from '@/hooks/use-instant-scroll-on-page-change'
+
+// A separate component because React runs effects in sibling order:
+// placed before <ScrollRestoration />, its effect runs first.
+function InstantScrollOnPageChange() {
+  useInstantScrollOnPageChange()
+  return null
+}
 
 export function RootLayout() {
   return (
@@ -14,6 +22,7 @@ export function RootLayout() {
       <main id="main" className="min-h-dvh">
         <Outlet />
       </main>
+      <InstantScrollOnPageChange />
       <ScrollRestoration />
     </>
   )

@@ -4,6 +4,8 @@ import { useLocation } from 'react-router'
 // A section becomes active once its top passes 40% of the way down the screen.
 const ACTIVE_LINE_RATIO = 0.4
 const BOTTOM_TOLERANCE_PX = 2
+const PROJECT_PAGES_PREFIX = '/projects/'
+const WORK_SECTION_ID = 'work'
 
 export type SectionPosition = {
   id: string
@@ -70,5 +72,6 @@ export function useActiveSection(sectionIds: string[]) {
     }
   }, [sectionIds, pathname])
 
-  return activeId
+  // Project pages have no sections; they belong to Work.
+  return pathname.startsWith(PROJECT_PAGES_PREFIX) ? WORK_SECTION_ID : activeId
 }

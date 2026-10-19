@@ -31,6 +31,8 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 - Tech stack list: `apps/web/src/data/tech-stack.ts`, shared by the logo carousel and the bento stack card. The carousel (`features/tech-marquee/`) moves at a constant (linear) speed, pauses on hover, and becomes a still, wrapped row under "reduce motion".
 - Site content lives in `apps/web/src/data/` (profile, projects, experience, education, tech stack). Edit text there, not in components.
 - Bento (`features/bento/`): every card uses `BentoCard` for the border, cursor `spotlight`, hover lift, and `rise-in` reveal. Clickable cards use `CardLink`, which stretches one real link over the whole card.
+- Routes: `/` (home) and `/projects/:slug` (one page per project in `data/projects.ts`; unknown slugs show the 404 page). Project fields that are still empty (stack, live link, source link) are hidden, not faked.
+- Scrolling: smooth within a page; changing pages jumps instantly. `useInstantScrollOnPageChange` handles that and must stay before `<ScrollRestoration />` in the root layout.
 
 ## Working agreement
 
