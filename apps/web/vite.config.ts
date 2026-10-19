@@ -10,4 +10,8 @@ export default defineConfig({
       '@': path.resolve(import.meta.dirname, './src'),
     },
   },
+  build: {
+    // three.js alone is ~560 kB; it loads lazily after the page is visible.
+    chunkSizeWarningLimit: 600,
+  },
 })

@@ -16,7 +16,7 @@
   --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
 
   /* Type scale: display (name) → title (sections) → heading (cards) → body → meta → label */
-  --text-display: clamp(2.75rem, 7vw, 4.5rem);
+  --text-display: clamp(2.5rem, 5.5vw, 4.25rem);
   --text-display--line-height: 1;
   --text-display--letter-spacing: -0.05em;
   --text-title: clamp(1.75rem, 3.5vw, 2.25rem);
@@ -67,6 +67,63 @@
   --radius-2xl: calc(var(--radius) * 1.5);
 }
 
+/* Animations, all on the shared easing curve. */
+@theme {
+  --animate-word-in: word-in 0.7s var(--ease-smooth) both;
+  --animate-sheen: sheen 3.2s var(--ease-smooth) infinite;
+  --animate-float: float 5s ease-in-out infinite;
+
+  @keyframes word-in {
+    from {
+      opacity: 0;
+      transform: translateY(60%);
+      filter: blur(6px);
+    }
+  }
+  @keyframes sheen {
+    from {
+      transform: translateX(-100%);
+    }
+    60%,
+    to {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes float {
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+}
+
+/* Faint grid behind the landing section, fading out toward the edges. */
+@utility hero-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(80% 70% at 70% 45%, #000, transparent);
+}
+
+/* Soft light behind the avatar. */
+@utility hero-glow {
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+}
+
+/* A light sweep across the primary button every few seconds. */
+@utility sheen {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 30%, var(--sheen) 50%, transparent 70%);
+    animation: var(--animate-sheen);
+  }
+}
+
 :root {
   --duration-fast: 150ms;
   --duration-base: 250ms;
@@ -94,6 +151,9 @@
   --border-strong: rgb(9 9 11 / 18%);
   --input: rgb(9 9 11 / 18%);
   --ring: #a1a1aa;
+  --grid-line: rgb(9 9 11 / 5%);
+  --glow: rgb(9 9 11 / 6%);
+  --sheen: rgb(255 255 255 / 35%);
 }
 
 .dark {
@@ -118,6 +178,9 @@
   --border-strong: rgb(255 255 255 / 20%);
   --input: rgb(255 255 255 / 15%);
   --ring: #52525b;
+  --grid-line: rgb(255 255 255 / 4.5%);
+  --glow: rgb(255 255 255 / 9%);
+  --sheen: rgb(9 9 11 / 14%);
 }
 
 @layer base {
