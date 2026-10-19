@@ -21,7 +21,7 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 ### Design system
 
 - Tokens live in `apps/web/src/styles/globals.css`. Use them; never hard-code colors, font sizes, or timings.
-- Colors: monochrome. Dark `#09090b` page, `#111113` cards, white/gray text, `success` green only for the "available" dot.
+- Colors: monochrome. Dark `#09090b` page, `#111113` cards, white/gray text, `success` green only for status dots ("Open to internships" and the bento "Now" card).
 - Type scale (Tailwind classes): `text-display` (name), `text-title` (section titles), `text-heading` (card titles), `text-body`, `text-meta`, `text-label` (mono labels with `font-mono`).
 - Muted text: `text-muted-foreground` for supporting text, `text-subtle` for the dimmest labels.
 - Motion: one easing curve (`ease-smooth`) and three speeds (`--duration-fast` 150ms hover, `--duration-base` 250ms menus, `--duration-slow` 500ms reveals). Every animation turns off under "reduce motion".
@@ -29,6 +29,8 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 - Don't name custom utilities `shimmer`: shadcn's stylesheet already defines one. Ours is `sheen`.
 - 3D avatar: plain three.js in `features/hero/lib/` (scene, head, hair, body, materials, input). It loads lazily, pauses when off-screen, and skips idle animation under "reduce motion". three.js uses physical light units, so light intensities are about 3× the old values.
 - Tech stack list: `apps/web/src/data/tech-stack.ts`, shared by the logo carousel and the bento stack card. The carousel (`features/tech-marquee/`) moves at a constant (linear) speed, pauses on hover, and becomes a still, wrapped row under "reduce motion".
+- Site content lives in `apps/web/src/data/` (profile, projects, experience, education, tech stack). Edit text there, not in components.
+- Bento (`features/bento/`): every card uses `BentoCard` for the border, cursor `spotlight`, hover lift, and `rise-in` reveal. Clickable cards use `CardLink`, which stretches one real link over the whole card.
 
 ## Working agreement
 
@@ -256,6 +258,8 @@ Why kebab-case files: Windows and Mac ignore letter case in file names, but Linu
 - Branch names start with `feature/`, `fix/`, or `chore/`.
 - Small commits with Conventional Commits: `feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`.
 - Merge through a pull request after CI passes.
+- I commit and push myself. Claude never runs `git commit` or `git push`; it sends me the commands instead.
+- No `Co-Authored-By: Claude` line in commit messages.
 
 ## Commands
 

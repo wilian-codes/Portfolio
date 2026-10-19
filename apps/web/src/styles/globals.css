@@ -73,6 +73,7 @@
   --animate-sheen: sheen 3.2s var(--ease-smooth) infinite;
   --animate-float: float 5s ease-in-out infinite;
   --animate-marquee: marquee 40s linear infinite;
+  --animate-rise-in: rise-in var(--duration-slow) var(--ease-smooth) both;
 
   @keyframes word-in {
     from {
@@ -101,6 +102,12 @@
       transform: translateX(calc(-100% - var(--marquee-gap)));
     }
   }
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
 }
 
 /* Faint grid behind the landing section, fading out toward the edges. */
@@ -121,6 +128,35 @@
 /* Fades content out at the left and right edges, so the logo carousel doesn't end in a hard cut. */
 @utility edge-fade {
   mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+/*
+ * A soft light that follows the cursor inside a card. useSpotlight() writes the
+ * cursor position to --spotlight-x/y. The light sits behind the card's content
+ * (z-index -1 inside the card's own stacking context), so text stays crisp.
+ */
+@utility spotlight {
+  isolation: isolate;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      240px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+      var(--spotlight),
+      transparent 70%
+    );
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+  }
+  @media (hover: hover) {
+    &:hover::before {
+      opacity: 1;
+    }
+  }
 }
 
 /* A light sweep across the primary button every few seconds. */
@@ -166,6 +202,8 @@
   --grid-line: rgb(9 9 11 / 5%);
   --glow: rgb(9 9 11 / 6%);
   --sheen: rgb(255 255 255 / 35%);
+  --spotlight: rgb(9 9 11 / 5%);
+  --spotlight-inverted: rgb(255 255 255 / 14%);
 }
 
 .dark {
@@ -193,6 +231,8 @@
   --grid-line: rgb(255 255 255 / 4.5%);
   --glow: rgb(255 255 255 / 9%);
   --sheen: rgb(9 9 11 / 14%);
+  --spotlight: rgb(255 255 255 / 8%);
+  --spotlight-inverted: rgb(9 9 11 / 10%);
 }
 
 @layer base {

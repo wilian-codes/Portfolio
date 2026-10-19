@@ -1,9 +1,9 @@
+import { BentoSection } from '@/features/bento/components/bento-section'
 import { HeroSection } from '@/features/hero/components/hero-section'
 import { TechMarquee } from '@/features/tech-marquee/components/tech-marquee'
 
-// Placeholder sections so the nav has targets; steps 5–7 replace each one.
+// Placeholder sections so the nav has targets; steps 6–7 replace each one.
 const PLACEHOLDER_SECTIONS = [
-  { id: 'about', label: '01 / Overview', title: 'At a glance', note: 'Bento grid arrives in step 5.' },
   { id: 'work', label: '02 / Work', title: 'Selected projects', note: 'Projects arrive in step 6.' },
   { id: 'contact', label: '03 / Contact', title: "Let's work together", note: 'Contact arrives in step 7.' },
 ]
@@ -16,6 +16,8 @@ export function HomePage() {
         <HeroSection />
         <TechMarquee />
       </div>
+
+      <BentoSection />
 
       {PLACEHOLDER_SECTIONS.map((section) => (
         <section

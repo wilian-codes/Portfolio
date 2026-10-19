@@ -6,8 +6,10 @@ export const PROFILE = {
   availability: 'Open to internships',
   location: 'Pampanga, Philippines',
   shortLocation: 'Pampanga, PH',
+  githubUsername: 'wilian-codes',
   githubUrl: 'https://github.com/wilian-codes',
   // Placeholders until Wilian confirms them.
+  currentFocus: { title: 'Building this portfolio', detail: 'React, Tailwind CSS, and three.js' },
   email: 'hello@example.com',
   linkedinUrl: 'https://www.linkedin.com/in/your-profile',
   resumeUrl: '/resume.pdf',
