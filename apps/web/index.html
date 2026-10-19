@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wilian Nunag — Web and mobile developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Wilian Nunag, a BSIT student at National University – Clark who builds and tests web and mobile apps."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Apply the saved theme before the page paints so light-mode visitors never see a dark flash. -->
+    <script>
+      try {
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark')
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
