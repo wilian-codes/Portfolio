@@ -25,7 +25,9 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 - Type scale (Tailwind classes): `text-display` (name), `text-title` (section titles), `text-heading` (card titles), `text-body`, `text-meta`, `text-label` (mono labels with `font-mono`).
 - Muted text: `text-muted-foreground` for supporting text, `text-subtle` for the dimmest labels.
 - Motion: one easing curve (`ease-smooth`) and three speeds (`--duration-fast` 150ms hover, `--duration-base` 250ms menus, `--duration-slow` 500ms reveals). Every animation turns off under "reduce motion".
-- Fonts: Geist and Geist Mono via Fontsource. Icons: Lucide for UI, Simple Icons for tech logos.
+- Fonts: Geist and Geist Mono via Fontsource. Icons: Lucide for UI, Simple Icons for tech logos, Tabler for the GitHub and LinkedIn icons (Simple Icons no longer ships LinkedIn).
+- Don't name custom utilities `shimmer`: shadcn's stylesheet already defines one. Ours is `sheen`.
+- 3D avatar: plain three.js in `features/hero/lib/` (scene, head, hair, body, materials, input). It loads lazily, pauses when off-screen, and skips idle animation under "reduce motion". three.js uses physical light units, so light intensities are about 3× the old values.
 
 ## Working agreement
 
