@@ -12,7 +12,7 @@ export function HeroSection() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative isolate flex min-h-[calc(100dvh-4rem)] scroll-mt-24 flex-col overflow-hidden [--parallax-x:0] [--parallax-y:0] md:min-h-[calc(100dvh-4.25rem)]"
+      className="relative isolate flex flex-1 scroll-mt-24 flex-col overflow-hidden [--parallax-x:0] [--parallax-y:0]"
     >
       <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0 -z-10" />
       <div aria-hidden="true" className="hero-glow pointer-events-none absolute top-24 -right-24 -z-10 size-[30rem]" />

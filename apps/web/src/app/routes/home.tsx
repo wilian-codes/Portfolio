@@ -1,6 +1,7 @@
 import { HeroSection } from '@/features/hero/components/hero-section'
+import { TechMarquee } from '@/features/tech-marquee/components/tech-marquee'
 
-// Placeholder sections so the nav has targets; steps 4–7 replace each one.
+// Placeholder sections so the nav has targets; steps 5–7 replace each one.
 const PLACEHOLDER_SECTIONS = [
   { id: 'about', label: '01 / Overview', title: 'At a glance', note: 'Bento grid arrives in step 5.' },
   { id: 'work', label: '02 / Work', title: 'Selected projects', note: 'Projects arrive in step 6.' },
@@ -10,7 +11,11 @@ const PLACEHOLDER_SECTIONS = [
 export function HomePage() {
   return (
     <>
-      <HeroSection />
+      {/* The first screen: the landing section grows to fill it, with the logo carousel at the bottom. */}
+      <div className="flex min-h-[calc(100dvh-4rem)] flex-col md:min-h-[calc(100dvh-4.25rem)]">
+        <HeroSection />
+        <TechMarquee />
+      </div>
 
       {PLACEHOLDER_SECTIONS.map((section) => (
         <section

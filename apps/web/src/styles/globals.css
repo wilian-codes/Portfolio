@@ -72,6 +72,7 @@
   --animate-word-in: word-in 0.7s var(--ease-smooth) both;
   --animate-sheen: sheen 3.2s var(--ease-smooth) infinite;
   --animate-float: float 5s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
 
   @keyframes word-in {
     from {
@@ -94,6 +95,12 @@
       transform: translateY(-6px);
     }
   }
+  /* Slides one copy of a list exactly one copy-width (plus the gap) left, then repeats. */
+  @keyframes marquee {
+    to {
+      transform: translateX(calc(-100% - var(--marquee-gap)));
+    }
+  }
 }
 
 /* Faint grid behind the landing section, fading out toward the edges. */
@@ -109,6 +116,11 @@
 @utility hero-glow {
   border-radius: 9999px;
   background: radial-gradient(closest-side, var(--glow), transparent);
+}
+
+/* Fades content out at the left and right edges, so the logo carousel doesn't end in a hard cut. */
+@utility edge-fade {
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
 }
 
 /* A light sweep across the primary button every few seconds. */
