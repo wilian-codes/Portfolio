@@ -190,7 +190,9 @@
   --secondary-foreground: #09090b;
   --muted: #f4f4f5;
   --muted-foreground: #52525b;
-  --subtle: #71717a;
+  /* The dimmest text still reaches 4.5:1 on every light surface, including hovered rows. */
+  --subtle: #6e6e75;
+  --subtle-inverted: #828289;
   --accent: #f4f4f5;
   --accent-foreground: #09090b;
   --destructive: #dc2626;
@@ -198,7 +200,8 @@
   --border: rgb(9 9 11 / 8%);
   --border-strong: rgb(9 9 11 / 18%);
   --input: rgb(9 9 11 / 18%);
-  --ring: #a1a1aa;
+  /* Focus rings use this at 50% opacity; it keeps them above 3:1 against the page. */
+  --ring: #18181b;
   --grid-line: rgb(9 9 11 / 5%);
   --glow: rgb(9 9 11 / 6%);
   --sheen: rgb(255 255 255 / 35%);
@@ -219,7 +222,9 @@
   --secondary-foreground: #fafafa;
   --muted: #18181b;
   --muted-foreground: #a1a1aa;
-  --subtle: #71717a;
+  /* The dimmest text still reaches 4.5:1 on every dark surface, including cards and hovered rows. */
+  --subtle: #828289;
+  --subtle-inverted: #6e6e75;
   --accent: #18181b;
   --accent-foreground: #fafafa;
   --destructive: #f87171;
@@ -227,7 +232,8 @@
   --border: rgb(255 255 255 / 8%);
   --border-strong: rgb(255 255 255 / 20%);
   --input: rgb(255 255 255 / 15%);
-  --ring: #52525b;
+  /* Focus rings use this at 50% opacity; it keeps them above 3:1 against the page. */
+  --ring: #d4d4d8;
   --grid-line: rgb(255 255 255 / 4.5%);
   --glow: rgb(255 255 255 / 9%);
   --sheen: rgb(9 9 11 / 14%);

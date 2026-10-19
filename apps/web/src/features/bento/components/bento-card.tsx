@@ -21,7 +21,7 @@ export function BentoCard({ children, isRevealed, isInverted = false, className 
       className={cn(
         'group spotlight relative flex flex-col overflow-hidden rounded-lg border p-5 transition-[translate,border-color] duration-(--duration-base) hover:-translate-y-0.75 has-focus-visible:ring-3 has-focus-visible:ring-ring/50',
         isInverted
-          ? 'border-foreground bg-foreground text-background [--spotlight:var(--spotlight-inverted)]'
+          ? 'border-foreground bg-foreground text-background [--spotlight:var(--spotlight-inverted)] [--subtle:var(--subtle-inverted)]'
           : 'border-border bg-card hover:border-border-strong',
         isRevealed ? 'animate-rise-in' : 'opacity-0',
         className,

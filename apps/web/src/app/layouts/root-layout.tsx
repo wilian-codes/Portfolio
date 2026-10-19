@@ -20,7 +20,7 @@ export function RootLayout() {
         Skip to content
       </a>
       <SiteNav />
-      <main id="main" className="min-h-dvh">
+      <main id="main" className="min-h-dvh scroll-mt-24">
         <Outlet />
       </main>
       <SiteFooter />

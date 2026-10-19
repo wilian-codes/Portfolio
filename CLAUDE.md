@@ -23,7 +23,8 @@ Web only. This project uses `apps/web` and nothing else: no `apps/api`, no `pack
 - Tokens live in `apps/web/src/styles/globals.css`. Use them; never hard-code colors, font sizes, or timings.
 - Colors: monochrome. Dark `#09090b` page, `#111113` cards, white/gray text, `success` green only for status dots ("Open to internships" and the bento "Now" card).
 - Type scale (Tailwind classes): `text-display` (name), `text-title` (section titles), `text-heading` (card titles), `text-body`, `text-meta`, `text-label` (mono labels with `font-mono`).
-- Muted text: `text-muted-foreground` for supporting text, `text-subtle` for the dimmest labels.
+- Muted text: `text-muted-foreground` for supporting text, `text-subtle` for the dimmest labels. Every text color reaches 4.5:1 contrast on every surface it sits on (cards and hovered rows included); check before changing a gray. Inverted cards swap in `--subtle-inverted`.
+- Focus rings: `focus-visible:ring-3 focus-visible:ring-ring/50`. The `--ring` token is chosen so the ring stays above 3:1 against the page; don't lower it.
 - Motion: one easing curve (`ease-smooth`) and three speeds (`--duration-fast` 150ms hover, `--duration-base` 250ms menus, `--duration-slow` 500ms reveals). Every animation turns off under "reduce motion".
 - Fonts: Geist and Geist Mono via Fontsource. Icons: Lucide for UI, Simple Icons for tech logos, Tabler for the GitHub and LinkedIn icons (Simple Icons no longer ships LinkedIn).
 - Don't name custom utilities `shimmer`: shadcn's stylesheet already defines one. Ours is `sheen`.
@@ -253,7 +254,7 @@ Why kebab-case files: Windows and Mac ignore letter case in file names, but Linu
 
 - Every service function with a business rule gets a Vitest unit test.
 - Main API routes get Vitest tests.
-- The main user flow gets a Playwright test in `apps/web/e2e/`.
+- The main user flow gets a Playwright test in `apps/web/e2e/`. Playwright builds the site, serves it with `vite preview`, and runs every test at desktop and phone size (Chromium only). A test also checks that no phone number appears on the page.
 - Unit tests sit next to the file they test: `order.service.test.ts` beside `order.service.ts`.
 
 ## Git
@@ -271,4 +272,6 @@ Why kebab-case files: Windows and Mac ignore letter case in file names, but Linu
 - `npm install` at the root installs every app.
 - `npm run dev` starts the API and the web app together.
 - `npm run dev -w apps/api` starts one app. Same for `apps/web` and `apps/mobile`.
-- `npm run lint`, `npm run typecheck`, and `npm run test` check every app. CI runs the same three.
+- `npm run lint`, `npm run typecheck`, and `npm run test` check every app.
+- `npm run test:e2e` runs the Playwright tests. The first time, run `npx playwright install chromium` inside `apps/web`.
+- CI (`.github/workflows/ci.yml`) runs lint, typecheck, unit tests, build, and the Playwright tests on every pull request and every push to `main`.
